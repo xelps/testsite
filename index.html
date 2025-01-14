@@ -28,6 +28,23 @@
   
 </head>
 <body>
+	<h1 id="userName">Загрузка...</h1>
+    <button id="sendDataBtn">Отправить данные</button>
+
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.expand();
+
+        const user = tg.initDataUnsafe.user;
+        document.addEventListener("DOMContentLoaded", () => {
+            const userName = user ? user.first_name : "Гость";
+            document.getElementById("userName").innerText = `Привет, ${userName}!`;
+        });
+
+        document.getElementById("sendDataBtn").addEventListener("click", () => {
+            tg.sendData("Это данные, отправленные из Mini App!");
+        });
+    </script>
   
   <section data-bs-version="5.1" class="features4 cid-tMlEXTHLbS" id="features04-w">
 	
